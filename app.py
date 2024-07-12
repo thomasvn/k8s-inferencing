@@ -3,6 +3,8 @@ import os
 from transformers import pipeline
 from huggingface_hub import login
 
+# os.environ["TRANSFORMERS_CACHE"] = "./cache"
+
 login(token=os.getenv("HUGGINGFACE_ACCESS_TOKEN"))
 
 messages = [

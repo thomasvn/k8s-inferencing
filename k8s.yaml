@@ -1,0 +1,48 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: thomasn-py-infer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-inference
+  namespace: thomasn-py-infer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-inference
+  template:
+    metadata:
+      labels:
+        app: python-inference
+    spec:
+      containers:
+      - name: python-inference
+        image: thomasvn/python-inference:latest
+        volumeMounts:
+        - mountPath: /app
+          name: app-storage
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+      volumes:
+      - name: app-storage
+        persistentVolumeClaim:
+          claimName: app-pvc
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: app-pvc
+  namespace: thomasn-py-infer
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
