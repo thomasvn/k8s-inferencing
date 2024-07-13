@@ -12,6 +12,8 @@ metadata:
   namespace: thomasn-py-infer
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: python-inference
@@ -24,11 +26,34 @@ spec:
       - name: python-inference
         image: thomasvn/python-inference:latest
         volumeMounts:
-        - mountPath: /app
+        - mountPath: /app/data
           name: app-storage
         resources:
+          requests:
+            cpu: 4
+            memory: 40Gi
           limits:
             nvidia.com/gpu: 1
+            cpu: 4
+            memory: 40Gi
+        env:
+        - name: HUGGINGFACE_ACCESS_TOKEN
+          value: "${HUGGINGFACE_ACCESS_TOKEN}"
+        - name: HF_HOME
+          value: "/app/data/.cache"
+      - name: debug-container
+        image: busybox
+        command: ["sh", "-c", "sleep infinity"]
+        volumeMounts:
+        - mountPath: /app/data
+          name: app-storage
+        resources:
+          requests:
+            cpu: 10m
+            memory: 20Mi
+          limits:
+            cpu: 10m
+            memory: 20Mi
       volumes:
       - name: app-storage
         persistentVolumeClaim:

@@ -10,17 +10,21 @@ pip install -r requirements.txt
 
 ## Usage
 
+Local run:
+
 ```sh
 source .env
 python3 app.py
 ```
 
+Kubernetes run:
+
 ```sh
-docker buildx create --use
 docker buildx build --platform linux/amd64,linux/arm64 -t thomasvn/python-inference . --push
 docker push thomasvn/python-inference
 
-kubectl aply k8s.yaml
+source .env
+envsubst < k8s.yaml | kubectl apply -f -
 ```
 
 <!--
@@ -29,11 +33,15 @@ https://huggingface.co/docs/transformers/quicktour
 https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1
 -->
 
+<!--
+aws ec2 describe-volumes --volume-ids <volume-id>
+aws ec2 detach-volume --volume-id <volume-id>
+-->
+
 <!-- TODO:
 - MOST IMPORTANT. Need to be able to quickly iterate on the model. Download model once then save to disk.
 - k8s manifest
-- python3: can't open file '/app/app.py': [Errno 2] No such file or directory
-- Makefile ?
+- Makefile?
 - https://hub.docker.com/r/pytorch/pytorch
 -->
 
