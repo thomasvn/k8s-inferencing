@@ -1,18 +1,18 @@
-# Python Inference
+# K8s Inferencing
 
-## Setup
-
-```sh
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
+(attempting to) Deploy a pre-trained model to k8s for inferencing. Note, that this will require downloading model sizes of approximately 100GB.
 
 ## Usage
 
 Local run:
 
 ```sh
+# Setup virtualenv
+python3 -m venv .venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+# Run
 source .env
 python3 app.py
 ```
@@ -40,11 +40,12 @@ aws ec2 detach-volume --volume-id <volume-id>
 
 <!-- TODO:
 - MOST IMPORTANT. Need to be able to quickly iterate on the model. Download model once then save to disk.
-- k8s manifest
+- Run the model with lower precision so it doesn't max out node usage
 - Makefile?
 - https://hub.docker.com/r/pytorch/pytorch
 -->
 
 <!-- DONE: (most recent to least recent)
 - Dockerfile
+- k8s manifest
 -->

@@ -2,14 +2,14 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: thomasn-py-infer
+  name: llm-inferencing
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: python-inference
-  namespace: thomasn-py-infer
+  namespace: llm-inferencing
 spec:
   replicas: 1
   strategy:
@@ -64,7 +64,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: app-pvc
-  namespace: thomasn-py-infer
+  namespace: llm-inferencing
 spec:
   accessModes:
     - ReadWriteOnce
