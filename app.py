@@ -1,15 +1,11 @@
 import os
 
-from transformers import pipeline
+from transformers import pipeline, set_seed
 from huggingface_hub import login
 
 login(token=os.getenv("HUGGINGFACE_ACCESS_TOKEN"))
 
-messages = [
-    {"role": "user", "content": "Who are you?"},
-]
-
-# Downloads the model to cache if it does not already exist. Approximately
-# ~100GB in total (19 5GB chunks).
-pipe = pipeline("text-generation", model="mistralai/Mixtral-8x7B-Instruct-v0.1")
-pipe(messages)
+generator = pipeline("text-generation", model="openai-community/gpt2")
+set_seed(42)
+result = generator("Hello, I'm a language model,", truncation=True, max_length=30, num_return_sequences=5)
+print(result)

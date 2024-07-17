@@ -30,12 +30,20 @@ spec:
           name: app-storage
         resources:
           requests:
-            cpu: 4
-            memory: 40Gi
+            ## Small ##
+            # cpu: 4
+            # memory: 40Gi
+            ## Large ##
+            cpu: "24"
+            memory: "177Gi"
           limits:
-            nvidia.com/gpu: 1
-            cpu: 4
-            memory: 40Gi
+            nvidia.com/gpu: "1"
+            ## Small ##
+            # cpu: 4
+            # memory: 40Gi
+            ## Large ##
+            cpu: "24"
+            memory: "177Gi"
         env:
         - name: HUGGINGFACE_ACCESS_TOKEN
           value: "${HUGGINGFACE_ACCESS_TOKEN}"

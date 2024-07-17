@@ -33,19 +33,31 @@ https://huggingface.co/docs/transformers/quicktour
 https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1
 -->
 
+<!-- 
+Small/lightweight models:
+- https://huggingface.co/openai-community/gpt2
+- https://huggingface.co/distilbert/distilgpt2/tree/main
+- https://huggingface.co/distilbert/distilbert-base-uncased
+- https://huggingface.co/microsoft/Phi-3-mini-4k-instruct
+-->
+
 <!--
 aws ec2 describe-volumes --volume-ids <volume-id>
 aws ec2 detach-volume --volume-id <volume-id>
 -->
 
 <!-- TODO:
-- MOST IMPORTANT. Need to be able to quickly iterate on the model. Download model once then save to disk.
-- Run the model with lower precision so it doesn't max out node usage
+
+~ faster iterations ~
+
+- Use the `pipeline()` API and specify a GPU device to run on. "Hardware accelerator e.g. GPU is available in the environment, but no `device` argument is passed to the `Pipeline` object. Model will be on CPU."
+- Run the model with lower precision so it doesn't max out node usage?
 - Makefile?
 - https://hub.docker.com/r/pytorch/pytorch
 -->
 
 <!-- DONE: (most recent to least recent)
+- Switch to GPT2 for faster iterations
 - Dockerfile
 - k8s manifest
 -->
