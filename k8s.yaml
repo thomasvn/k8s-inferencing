@@ -30,7 +30,7 @@ spec:
           name: app-storage
         resources:
           requests:
-            ## Small ##
+            ## Medium ##
             # cpu: 4
             # memory: 40Gi
             ## Large ##
@@ -38,7 +38,7 @@ spec:
             memory: "177Gi"
           limits:
             nvidia.com/gpu: "1"
-            ## Small ##
+            ## Medium ##
             # cpu: 4
             # memory: 40Gi
             ## Large ##
@@ -49,6 +49,12 @@ spec:
           value: "${HUGGINGFACE_ACCESS_TOKEN}"
         - name: HF_HOME
           value: "/app/data/.cache"
+        - name: HF_HUB_VERBOSITY
+          value: "info"
+        - name: MODEL_NAME
+          value: "openai-community/gpt2"
+        - name: DEVICE
+          value: "cuda"
       - name: debug-container
         image: busybox
         command: ["sh", "-c", "sleep infinity"]

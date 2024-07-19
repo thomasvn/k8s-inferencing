@@ -1,6 +1,6 @@
 # K8s Inferencing
 
-(attempting to) Deploy a pre-trained model to k8s for inferencing. Note, that this will require downloading model sizes of approximately 100GB.
+(attempting to) Deploy a pre-trained model to k8s for inferencing. Note, that this will require downloading models which can range from 500MB to 100GB.
 
 ## Usage
 
@@ -52,6 +52,7 @@ aws ec2 detach-volume --volume-id <volume-id>
 
 - Use the `pipeline()` API and specify a GPU device to run on. "Hardware accelerator e.g. GPU is available in the environment, but no `device` argument is passed to the `Pipeline` object. Model will be on CPU."
 - Run the model with lower precision so it doesn't max out node usage?
+- Faster way to build multiarch images?
 - Makefile?
 - https://hub.docker.com/r/pytorch/pytorch
 -->
