@@ -51,6 +51,7 @@ aws ec2 detach-volume --volume-id <volume-id>
 ~ faster iterations ~
 
 - Use the `pipeline()` API and specify a GPU device to run on. "Hardware accelerator e.g. GPU is available in the environment, but no `device` argument is passed to the `Pipeline` object. Model will be on CPU."
+- More investigation on what is `.to("cuda")`
 - Run the model with lower precision so it doesn't max out node usage?
 - Faster way to build multiarch images?
 - Makefile?
@@ -58,6 +59,7 @@ aws ec2 detach-volume --volume-id <volume-id>
 -->
 
 <!-- DONE: (most recent to least recent)
+- Use Github Actions to build & push docker image
 - Switch to GPT2 for faster iterations
 - Dockerfile
 - k8s manifest
