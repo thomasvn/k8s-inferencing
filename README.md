@@ -27,6 +27,11 @@ source .env
 envsubst < k8s.yaml | kubectl apply -f -
 ```
 
+## Model Types
+
+- [openai-community/gpt2](https://huggingface.co/openai-community/gpt2). ~525MB. 137M Params.
+- [mistralai/Mixtral-8x7B-Instruct-v0.1](https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1). ~87GB. 46.7B Params.
+
 <!--
 https://huggingface.co/
 https://huggingface.co/docs/transformers/quicktour
@@ -50,12 +55,23 @@ aws ec2 detach-volume --volume-id <volume-id>
 
 ~ faster iterations ~
 
+- Force GPT2 to actually use the GPU? I want to be able to measure GPU usage here.
+  - https://huggingface.co/docs/transformers/main/en/model_doc/gpt2
 - Use the `pipeline()` API and specify a GPU device to run on. "Hardware accelerator e.g. GPU is available in the environment, but no `device` argument is passed to the `Pipeline` object. Model will be on CPU."
 - More investigation on what is `.to("cuda")`
 - Run the model with lower precision so it doesn't max out node usage?
-- Faster way to build multiarch images?
 - Makefile?
 - https://hub.docker.com/r/pytorch/pytorch
+- https://matt.sh/python-project-structure-2024
+- GH Actions Docker Build Cache?
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+- GH Actions speed up multiarch build?
 -->
 
 <!-- DONE: (most recent to least recent)

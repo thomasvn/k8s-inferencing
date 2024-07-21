@@ -31,19 +31,19 @@ spec:
         resources:
           requests:
             ## Medium ##
-            # cpu: 4
-            # memory: 40Gi
+            cpu: 4
+            memory: 40Gi
             ## Large ##
-            cpu: "24"
-            memory: "177Gi"
+            # cpu: "24"
+            # memory: "177Gi"
           limits:
             nvidia.com/gpu: "1"
             ## Medium ##
-            # cpu: 4
-            # memory: 40Gi
+            cpu: 4
+            memory: 40Gi
             ## Large ##
-            cpu: "24"
-            memory: "177Gi"
+            # cpu: "24"
+            # memory: "177Gi"
         env:
         - name: HUGGINGFACE_ACCESS_TOKEN
           value: "${HUGGINGFACE_ACCESS_TOKEN}"

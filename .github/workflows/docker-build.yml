@@ -38,5 +38,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: thomasvn/python-inference:${{ env.DATE }}
+          tags: thomasvn/python-inference:${{ env.DATE }}, thomasvn/python-inference:latest
           platforms: linux/amd64,linux/arm64
