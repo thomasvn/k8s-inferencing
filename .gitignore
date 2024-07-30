@@ -2,3 +2,7 @@ venv
 .venv
 .env
 logs.txt
+
+# Experimenting with Poetry package/env manager
+poetry.lock
+pyproject.toml
